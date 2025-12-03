@@ -1,45 +1,33 @@
-This is a [Docusaurus 2](https://docusaurus.io/) project, a modern static website generator.
+# Docusaurus Documentation Site + Wasmer
 
-## Usage
+This example shows how to publish a **Docusaurus 2** documentation site on **Wasmer Edge**.
 
-Install:
+## Demo
 
-```
-$ yarn
-```
+https://wasmer-edge-docusaurus-sample.wasmer.app/
 
-Develop:
+## How it Works
 
-```
-$ yarn start
-```
+* `docusaurus.config.js` configures site metadata, navbar/footer, and themes.
+* Markdown docs live in the `docs/` directory and are organised via `sidebars.js`.
+* `yarn build` (or `npm run build`) generates static assets in `build/`, ready for Wasmer Edge.
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+## Running Locally
 
-Build:
-
-```
-$ yarn build
+```bash
+yarn install
+yarn start
 ```
 
-You can run the Docusaurus example using Wasmer (check out the [install guide](https://docs.wasmer.io/install)):
+The dev server runs at `http://127.0.0.1:3000/` with live reload. To test the production bundle, run:
 
 ```bash
 yarn build
-wasmer run . -- --port=3000
+yarn serve   # serves ./build locally
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the docusaurus docs.
+## Deploying to Wasmer (Overview)
 
-
-## Deploy on Wasmer Edge
-
-The easiest way to deploy your Docusaurus app is to use the [Wasmer Edge](https://wasmer.io/products/edge).
-
-Live example: https://wasmer-edge-docusaurus-sample.wasmer.app/
-
-First, you'll need to run `yarn build`, and then, to deploy to Wasmer Edge:
-
-```bash
-wasmer deploy
-```
+1. Build the site: `yarn build` (outputs to `build/`).
+2. Configure Wasmer Edge to publish the `build/` directory.
+3. Deploy and browse `https://<your-subdomain>.wasmer.app/`.
